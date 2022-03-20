@@ -9,13 +9,13 @@ struct Gauge
   ydim::Int64
   zdim::Int64
   tdim::Int64
-  v::Int64
+  volume::Int64
 
   function Gauge(xdim, ydim, zdim, tdim)
-    v = xdim * ydim * zdim * tdim;
+    volume = xdim * ydim * zdim * tdim;
     diag = [1 0 0; 0 1 0; 0 0 1];
-    diags = fill(diag, v);
-    return new(diags, diags, diags, diags, xdim, ydim, zdim, tdim, v);
+    diags = fill(diag, volume);
+    return new(diags, diags, diags, diags, xdim, ydim, zdim, tdim, volume);
   end
 end
 
@@ -25,12 +25,12 @@ struct Fermion
   ydim::Int64
   zdim::Int64
   tdim::Int64
-  v::Int64
+  volume::Int64
 
   function Fermion(xdim, ydim, zdim, tdim)
-    v = xdim * ydim * zdim * tdim;
-    value = [rand(ComplexF64, 12) for v in 1:v];
-    return new(value, xdim, ydim, zdim, tdim, v);
+    volume = xdim * ydim * zdim * tdim;
+    value = [rand(ComplexF64, 12) for volume in 1:volume];
+    return new(value, xdim, ydim, zdim, tdim, volume);
   end
 end
 
